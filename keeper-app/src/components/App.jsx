@@ -1,12 +1,13 @@
 import React from "react";
+import Header from "./Header";
 
 function App() {
   return (
     <div>
-      <h1>Keeper App</h1>
+      <Header />
       {/* Other components like Header, Footer, Note can be added here */}
     </div>
   );
 }
 
-export default App;
+export default App; 
