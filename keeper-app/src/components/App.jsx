@@ -3,7 +3,6 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
 import Form from "./Form";
-import notes from "../notes";
 
 function App() {
   const [contentArray, setContentArray] = useState([]);
@@ -12,15 +11,30 @@ function App() {
     setContentArray((prevArray) => {
       return [...prevArray, inputText];
     });
-    console.log(contentArray);
+  }
+
+  function deleteItem(id) {
+    console.log("delete");
+
+    setContentArray((prevArray) => {
+      return prevArray.filter((item, index) => {
+        return index !== id;
+      });
+    });
   }
 
   return (
     <div>
       <Header />
       <Form onAdd={addItem} />
-      {contentArray.map((item) => (
-        <Note key={item.key} title={item.title} content={item.content} />
+      {contentArray.map((item, index) => (
+        <Note
+          key={index}
+          id={index}
+          title={item.title}
+          content={item.content}
+          onDelete={deleteItem}
+        />
       ))}
       <Footer />
     </div>
